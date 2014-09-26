@@ -1,0 +1,480 @@
+<?xml version="1.0" ?>
+<eml>
+<stepper class="ODEStepper" id="Default"/>
+<system class="System" id="/">
+<property name="StepperID">
+<value>Default</value>
+</property>
+<property name="Name">
+<value>default</value>
+</property>
+<process class="ExpressionFluxProcess" id="Reaction1">
+<property name="Name">
+<value>cyclin_cdc2k dissociation</value>
+</property>
+<property name="k6">
+<value>1.0</value>
+</property>
+<property name="Expression">
+<value>cell.Value * k6 * M.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>M</value>
+<value>Variable:/cell:M</value>
+<value>-1</value>
+</value>
+<value>
+<value>C2</value>
+<value>Variable:/cell:C2</value>
+<value>1</value>
+</value>
+<value>
+<value>YP</value>
+<value>Variable:/cell:YP</value>
+<value>1</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="Reaction2">
+<property name="Name">
+<value>cdc2k phosphorylation</value>
+</property>
+<property name="k8notP">
+<value>1000000.0</value>
+</property>
+<property name="Expression">
+<value>cell.Value * C2.NumberConc * k8notP</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>C2</value>
+<value>Variable:/cell:C2</value>
+<value>-1</value>
+</value>
+<value>
+<value>CP</value>
+<value>Variable:/cell:CP</value>
+<value>1</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="Reaction3">
+<property name="Name">
+<value>cdc2k dephosphorylation</value>
+</property>
+<property name="k9">
+<value>1000.0</value>
+</property>
+<property name="Expression">
+<value>cell.Value * CP.NumberConc * k9</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>CP</value>
+<value>Variable:/cell:CP</value>
+<value>-1</value>
+</value>
+<value>
+<value>C2</value>
+<value>Variable:/cell:C2</value>
+<value>1</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="Reaction4">
+<property name="Name">
+<value>cyclin cdc2k-p association</value>
+</property>
+<property name="k3">
+<value>200.0</value>
+</property>
+<property name="Expression">
+<value>cell.Value * CP.NumberConc * k3 * Y.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>CP</value>
+<value>Variable:/cell:CP</value>
+<value>-1</value>
+</value>
+<value>
+<value>Y</value>
+<value>Variable:/cell:Y</value>
+<value>-1</value>
+</value>
+<value>
+<value>pM</value>
+<value>Variable:/cell:pM</value>
+<value>1</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="Reaction5">
+<property name="Name">
+<value>deactivation of cdc2 kinase</value>
+</property>
+<property name="k5notP">
+<value>0.0</value>
+</property>
+<property name="Expression">
+<value>cell.Value * k5notP * M.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>M</value>
+<value>Variable:/cell:M</value>
+<value>-1</value>
+</value>
+<value>
+<value>pM</value>
+<value>Variable:/cell:pM</value>
+<value>1</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="Reaction6">
+<property name="Name">
+<value>cyclin biosynthesis</value>
+</property>
+<property name="k1aa">
+<value>0.015</value>
+</property>
+<property name="Expression">
+<value>cell.Value * k1aa</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>EmptySet</value>
+<value>Variable:/cell:EmptySet</value>
+<value>-1</value>
+</value>
+<value>
+<value>Y</value>
+<value>Variable:/cell:Y</value>
+<value>1</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="Reaction7">
+<property name="Name">
+<value>default degradation of cyclin</value>
+</property>
+<property name="k2">
+<value>0.0</value>
+</property>
+<property name="Expression">
+<value>cell.Value * k2 * Y.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>Y</value>
+<value>Variable:/cell:Y</value>
+<value>-1</value>
+</value>
+<value>
+<value>EmptySet</value>
+<value>Variable:/cell:EmptySet</value>
+<value>1</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="Reaction8">
+<property name="Name">
+<value>cdc2 kinase triggered degration of cyclin</value>
+</property>
+<property name="k7">
+<value>0.6</value>
+</property>
+<property name="Expression">
+<value>cell.Value * k7 * YP.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>YP</value>
+<value>Variable:/cell:YP</value>
+<value>-1</value>
+</value>
+<value>
+<value>EmptySet</value>
+<value>Variable:/cell:EmptySet</value>
+<value>1</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="Reaction9">
+<property name="Name">
+<value>activation of cdc2 kinase</value>
+</property>
+<property name="k4">
+<value>180.0</value>
+</property>
+<property name="k4prime">
+<value>0.018</value>
+</property>
+<property name="Expression">
+<value>cell.Value * pM.NumberConc * (k4prime + k4 * pow(M.NumberConc / CT.NumberConc, 2))</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>pM</value>
+<value>Variable:/cell:pM</value>
+<value>-1</value>
+</value>
+<value>
+<value>M</value>
+<value>Variable:/cell:M</value>
+<value>1</value>
+</value>
+<value>
+<value>CT</value>
+<value>Variable:/cell:CT</value>
+<value>0</value>
+</value>
+<value>
+<value>cell</value>
+<value>Variable:/cell:SIZE</value>
+<value>0</value>
+</value>
+</property>
+</process>
+</system>
+<system class="System" id="/cell">
+<property name="StepperID">
+<value>Default</value>
+</property>
+<variable class="Variable" id="Dimensions">
+<property name="Value">
+<value>3</value>
+</property>
+</variable>
+<variable class="Variable" id="SIZE">
+<property name="Value">
+<value>1.0</value>
+</property>
+<property name="Fixed">
+<value>1</value>
+</property>
+</variable>
+<variable class="Variable" id="EmptySet">
+<property name="Value">
+<value>0.0</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="C2">
+<property name="Name">
+<value>cdc2k</value>
+</property>
+<property name="Value">
+<value>0.0</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="CP">
+<property name="Name">
+<value>cdc2k-P</value>
+</property>
+<property name="Value">
+<value>0.75</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="M">
+<property name="Name">
+<value>p-cyclin_cdc2</value>
+</property>
+<property name="Value">
+<value>0.0</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="pM">
+<property name="Name">
+<value>p-cyclin_cdc2-p</value>
+</property>
+<property name="Value">
+<value>0.25</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="Y">
+<property name="Name">
+<value>cyclin</value>
+</property>
+<property name="Value">
+<value>0.0</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="YP">
+<property name="Name">
+<value>p-cyclin</value>
+</property>
+<property name="Value">
+<value>0.0</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="YT">
+<property name="Name">
+<value>total_cyclin</value>
+</property>
+<property name="Value">
+<value>0.25</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="CT">
+<property name="Name">
+<value>total_cdc2</value>
+</property>
+<property name="Value">
+<value>1.0</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+</system>
+<system class="System" id="/SBMLRule">
+<property name="Name">
+<value>System for SBML Rule</value>
+</property>
+<property name="StepperID">
+<value>Default</value>
+</property>
+<process class="ExpressionAssignmentProcess" id="Assignment_YT">
+<property name="StepperID">
+<value>Default</value>
+</property>
+<property name="Name">
+<value>Assignment rule for 'YT'</value>
+</property>
+<property name="Expression">
+<value>Y.NumberConc + YP.NumberConc + M.NumberConc + pM.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>YT</value>
+<value>Variable:/cell:YT</value>
+<value>1</value>
+</value>
+<value>
+<value>Y</value>
+<value>Variable:/cell:Y</value>
+<value>0</value>
+</value>
+<value>
+<value>YP</value>
+<value>Variable:/cell:YP</value>
+<value>0</value>
+</value>
+<value>
+<value>M</value>
+<value>Variable:/cell:M</value>
+<value>0</value>
+</value>
+<value>
+<value>pM</value>
+<value>Variable:/cell:pM</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionAssignmentProcess" id="Assignment_CT">
+<property name="StepperID">
+<value>Default</value>
+</property>
+<property name="Name">
+<value>Assignment rule for 'CT'</value>
+</property>
+<property name="Expression">
+<value>C2.NumberConc + CP.NumberConc + M.NumberConc + pM.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>CT</value>
+<value>Variable:/cell:CT</value>
+<value>1</value>
+</value>
+<value>
+<value>C2</value>
+<value>Variable:/cell:C2</value>
+<value>0</value>
+</value>
+<value>
+<value>CP</value>
+<value>Variable:/cell:CP</value>
+<value>0</value>
+</value>
+<value>
+<value>M</value>
+<value>Variable:/cell:M</value>
+<value>0</value>
+</value>
+<value>
+<value>pM</value>
+<value>Variable:/cell:pM</value>
+<value>0</value>
+</value>
+</property>
+</process>
+</system>
+</eml>
