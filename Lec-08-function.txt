@@ -1,0 +1,1 @@
+Pythonプログラミングの基礎（関数）関数**書式**```def 関数名( 引数１, 引数２,... ):    処理    ：    ：    return 戻り値```Lecture-05 演習2-2for t in range( 3, 18 ):    y = 1920 + t * 5    N = N0 * math.exp( gamma * t )    print "Year {}: N = {:.2e}".format( y, N )def increment_year():演習
