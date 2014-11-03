@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<eml>
+<stepper class="ODEStepper" id="Default"/>
+<system class="System" id="/">
+<property name="StepperID">
+<value>Default</value>
+</property>
+<variable class="Variable" id="u">
+<property name="Value">
+<value>0.0</value>
+</property>
+</variable>
+<variable class="Variable" id="v">
+<property name="Value">
+<value>0.0</value>
+</property>
+</variable>
+<process class="ExpressionFluxProcess" id="dudt">
+<property name="c">
+<value>10.0</value>
+</property>
+<property name="I">
+<value>0.5</value>
+</property>
+<property name="Expression">
+<value>c * ( -v.Value + u.Value - pow( u.Value, 3.0 )/3.0 + I )</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>u</value>
+<value>:.:u</value>
+<value>1</value>
+</value>
+<value>
+<value>v</value>
+<value>:.:v</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="dvdt">
+<property name="a">
+<value>0.7</value>
+</property>
+<property name="b">
+<value>0.8</value>
+</property>
+<property name="Expression">
+<value>u.Value - b * v.Value + a</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>u</value>
+<value>:.:u</value>
+<value>0</value>
+</value>
+<value>
+<value>v</value>
+<value>:.:v</value>
+<value>1</value>
+</value>
+</property>
+</process>
+</system>
+</eml>

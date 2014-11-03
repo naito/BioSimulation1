@@ -77,9 +77,10 @@ System System( /cell )
     {
         Name  "cyclin biosynthesis";
         k1aa  0.015;
-        Expression  "k1aa";
+        Expression  "k1aa / CT.Value";
         VariableReferenceList
-            [ Y   :.:Y  1 ];
+            [ Y    :.:Y   1 ]
+            [ CT   :.:CT  0 ];
     }
     
     Process ExpressionFluxProcess( R2 )
@@ -95,11 +96,12 @@ System System( /cell )
     {
         Name  "cyclin cdc2k-p association";
         k3  200.0;
-        Expression  "CP.Value * k3 * Y.Value";
+        Expression  "k3 * CP.Value * Y.Value / CT.Value";
         VariableReferenceList
             [ CP   :.:CP  -1 ]
             [ Y    :.:Y   -1 ]
-            [ pM   :.:pM   1 ];
+            [ pM   :.:pM   1 ]
+            [ CT   :.:CT   0 ];
     }
     
     Process ExpressionFluxProcess( R4 )

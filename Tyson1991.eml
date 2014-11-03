@@ -90,13 +90,18 @@
 <value>0.015</value>
 </property>
 <property name="Expression">
-<value>k1aa</value>
+<value>k1aa / CT.Value</value>
 </property>
 <property name="VariableReferenceList">
 <value>
 <value>Y</value>
 <value>:.:Y</value>
 <value>1</value>
+</value>
+<value>
+<value>CT</value>
+<value>:.:CT</value>
+<value>0</value>
 </value>
 </property>
 </process>
@@ -126,7 +131,7 @@
 <value>200.0</value>
 </property>
 <property name="Expression">
-<value>CP.Value * k3 * Y.Value</value>
+<value>k3 * CP.Value * Y.Value / CT.Value</value>
 </property>
 <property name="VariableReferenceList">
 <value>
@@ -143,6 +148,11 @@
 <value>pM</value>
 <value>:.:pM</value>
 <value>1</value>
+</value>
+<value>
+<value>CT</value>
+<value>:.:CT</value>
+<value>0</value>
 </value>
 </property>
 </process>
