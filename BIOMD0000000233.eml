@@ -1,0 +1,179 @@
+<?xml version="1.0" ?>
+<eml>
+<stepper class="ODEStepper" id="Default"/>
+<system class="System" id="/">
+<property name="StepperID">
+<value>Default</value>
+</property>
+<property name="Name">
+<value>default</value>
+</property>
+<process class="ExpressionFluxProcess" id="r1">
+<property name="Name">
+<value>r1</value>
+</property>
+<property name="k1">
+<value>8.0</value>
+</property>
+<property name="Expression">
+<value>k1 * S.NumberConc * Y.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>S</value>
+<value>Variable:/batch:S</value>
+<value>0</value>
+</value>
+<value>
+<value>Y</value>
+<value>Variable:/batch:Y</value>
+<value>-1</value>
+</value>
+<value>
+<value>X</value>
+<value>Variable:/batch:X</value>
+<value>2</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="r2">
+<property name="Name">
+<value>r2</value>
+</property>
+<property name="k2">
+<value>1.0</value>
+</property>
+<property name="Expression">
+<value>k2 * pow(X.NumberConc, 2)</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>X</value>
+<value>Variable:/batch:X</value>
+<value>-1</value>
+</value>
+<value>
+<value>Y</value>
+<value>Variable:/batch:Y</value>
+<value>1</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="r3">
+<property name="Name">
+<value>r3</value>
+</property>
+<property name="k3">
+<value>1.0</value>
+</property>
+<property name="Expression">
+<value>k3 * X.NumberConc * Y.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>X</value>
+<value>Variable:/batch:X</value>
+<value>-1</value>
+</value>
+<value>
+<value>Y</value>
+<value>Variable:/batch:Y</value>
+<value>0</value>
+</value>
+<value>
+<value>P</value>
+<value>Variable:/batch:P</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="r4">
+<property name="Name">
+<value>r4</value>
+</property>
+<property name="k4">
+<value>1.5</value>
+</property>
+<property name="Expression">
+<value>k4 * X.NumberConc</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>X</value>
+<value>Variable:/batch:X</value>
+<value>-1</value>
+</value>
+<value>
+<value>P</value>
+<value>Variable:/batch:P</value>
+<value>0</value>
+</value>
+</property>
+</process>
+</system>
+<system class="System" id="/batch">
+<property name="StepperID">
+<value>Default</value>
+</property>
+<property name="Name">
+<value>batch</value>
+</property>
+<variable class="Variable" id="Dimensions">
+<property name="Value">
+<value>3</value>
+</property>
+</variable>
+<variable class="Variable" id="SIZE">
+<property name="Value">
+<value>1.0</value>
+</property>
+<property name="Fixed">
+<value>1</value>
+</property>
+</variable>
+<variable class="Variable" id="S">
+<property name="Name">
+<value>S</value>
+</property>
+<property name="NumberConc">
+<value>1.0</value>
+</property>
+<property name="Fixed">
+<value>1</value>
+</property>
+</variable>
+<variable class="Variable" id="P">
+<property name="Name">
+<value>P</value>
+</property>
+<property name="NumberConc">
+<value>1.0</value>
+</property>
+<property name="Fixed">
+<value>1</value>
+</property>
+</variable>
+<variable class="Variable" id="X">
+<property name="Name">
+<value>X</value>
+</property>
+<property name="NumberConc">
+<value>1.0</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+<variable class="Variable" id="Y">
+<property name="Name">
+<value>Y</value>
+</property>
+<property name="NumberConc">
+<value>1.0</value>
+</property>
+<property name="Fixed">
+<value>0</value>
+</property>
+</variable>
+</system>
+</eml>

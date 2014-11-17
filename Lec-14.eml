@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+<eml>
+<stepper class="ODEStepper" id="Default"/>
+<system class="System" id="/">
+<property name="StepperID">
+<value>Default</value>
+</property>
+<variable class="Variable" id="S">
+<property name="Name">
+<value>S</value>
+</property>
+<property name="Value">
+<value>1.0</value>
+</property>
+</variable>
+<variable class="Variable" id="P">
+<property name="Name">
+<value>P</value>
+</property>
+<property name="Value">
+<value>1.0</value>
+</property>
+</variable>
+<variable class="Variable" id="X">
+<property name="Name">
+<value>X</value>
+</property>
+<property name="Value">
+<value>1.0</value>
+</property>
+</variable>
+<variable class="Variable" id="Y">
+<property name="Name">
+<value>Y</value>
+</property>
+<property name="Value">
+<value>1.0</value>
+</property>
+</variable>
+<process class="ExpressionFluxProcess" id="r1">
+<property name="Name">
+<value>r1</value>
+</property>
+<property name="k1">
+<value>8.0</value>
+</property>
+<property name="Expression">
+<value>k1 * S.Value * Y.Value</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>S</value>
+<value>:/:S</value>
+<value>0</value>
+</value>
+<value>
+<value>Y</value>
+<value>:/:Y</value>
+<value>-1</value>
+</value>
+<value>
+<value>X</value>
+<value>:/:X</value>
+<value>2</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="r2">
+<property name="Name">
+<value>r2</value>
+</property>
+<property name="k2">
+<value>1.0</value>
+</property>
+<property name="Expression">
+<value>k2 * pow(X.Value, 2)</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>X</value>
+<value>:/:X</value>
+<value>-1</value>
+</value>
+<value>
+<value>Y</value>
+<value>:/:Y</value>
+<value>1</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="r3">
+<property name="Name">
+<value>r3</value>
+</property>
+<property name="k3">
+<value>1.0</value>
+</property>
+<property name="Expression">
+<value>k3 * X.Value * Y.Value</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>X</value>
+<value>:/:X</value>
+<value>-1</value>
+</value>
+<value>
+<value>Y</value>
+<value>:/:Y</value>
+<value>0</value>
+</value>
+<value>
+<value>P</value>
+<value>:/:P</value>
+<value>0</value>
+</value>
+</property>
+</process>
+<process class="ExpressionFluxProcess" id="r4">
+<property name="Name">
+<value>r4</value>
+</property>
+<property name="k4">
+<value>1.5</value>
+</property>
+<property name="Expression">
+<value>k4 * X.Value</value>
+</property>
+<property name="VariableReferenceList">
+<value>
+<value>X</value>
+<value>:/:X</value>
+<value>-1</value>
+</value>
+<value>
+<value>P</value>
+<value>:/:P</value>
+<value>0</value>
+</value>
+</property>
+</process>
+</system>
+</eml>
