@@ -4,3 +4,4 @@
 _exclude
 *.graffle
 ECB3J-*.pdf
+.DS_Store
